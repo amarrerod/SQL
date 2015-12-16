@@ -1,0 +1,19 @@
+
+
+/** HALLAR EL NUMERO DE CREDITOS QUE IMPARTE UN PROFESOR */
+
+
+CREATE PROCEDURE CREDITOS_PROFESOR(v_dni PROFESOR.DNI%TYPE)
+IS
+    v_creditos NUMBER;
+    v_profesor PROFESOR.P%TYPE;
+
+BEGIN
+    
+        SELECT SUM(CTA+CPA+CL)
+        INTO    v_creditos
+        FROM PLAN_DOCENTE
+        WHERE DNI = v_dni;
+        
+        DBMS_OUTPUT.PUT_LINE('EL PROFESOR IMPARTE: '||v_creditos||' CREDITOS');
+END;
